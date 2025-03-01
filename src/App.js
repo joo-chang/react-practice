@@ -7,6 +7,9 @@ function App() {
   let [날짜, 날짜변경] = useState(['2월 17일 발행', '2월 18일 발행', '2월 19일 발행']);
   let [like, like변경] = useState(0);
 
+  let [modal, setModal] = useState(true);
+
+
   function addLike() {
     like변경(like + 1);
   }
@@ -21,6 +24,9 @@ function App() {
     newArray.sort();
     글제목변경(newArray);
   }
+
+  
+
   return (
     <div className="App">
       <div className="black-nav">
@@ -44,6 +50,20 @@ function App() {
         <h4>{ 글제목[2] }</h4>
         <p>{ 날짜[2] }</p>
       </div>
+      <button onClick={() => setModal(!modal)}>modal 열기/닫기</button>
+      {
+        modal === true ? <Modal /> : null
+      }
+    </div>
+  );
+}
+
+const Modal = () => {
+  return (
+    <div className='list'>
+      <h2>제목</h2>
+      <p>날짜</p>
+      <p>상세내용</p>
     </div>
   );
 }
