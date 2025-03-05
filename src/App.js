@@ -52,18 +52,19 @@ function App() {
       </div>
       <button onClick={() => setModal(!modal)}>modal 열기/닫기</button>
       {
-        modal === true ? <Modal /> : null
+        modal === true ? <Modal 글제목={글제목} update={setTitle} /> : null
       }
     </div>
   );
 }
 
-const Modal = () => {
+const Modal = (props) => {
   return (
-    <div className='list'>
-      <h2>제목</h2>
+    <div className='list' >
+      <h2>{props.글제목[0]}</h2>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={props.update}>글수정</button>
     </div>
   );
 }
