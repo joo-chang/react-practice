@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
-import { Button } from 'react-bootstrap'
+import { Header } from './components/header'
+import { CardComponent } from './components/card'
 
 
 function App() {
@@ -10,7 +10,8 @@ function App() {
 
   return (
     <>
-      <Button>test</Button>
+      <Header />
+      <CardComponent title="test" description="설명" image="https://picsum.photos/200/300"/>
     </>
   )
 }
