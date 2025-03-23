@@ -6,27 +6,28 @@ import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
 export const CardComponent = (props) => {
+  const product = props.product;
   return (
     <Card sx={{ width: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="240"
-          image={props.image}
-          alt={props.title}
+          image={product.image}
+          alt={product.title}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {props.title}
+            {product.title}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {props.price} $
+            {product.price}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {props.description}
+            {product.description}
           </Typography>
         </CardContent>
       </CardActionArea>
     </Card>
   );
-}
+};
