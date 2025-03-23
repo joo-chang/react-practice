@@ -20,6 +20,9 @@ export const CardComponent = (props) => {
             {props.title}
           </Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            {props.price} $
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
             {props.description}
           </Typography>
         </CardContent>
