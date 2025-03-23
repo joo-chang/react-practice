@@ -5,8 +5,9 @@ import { CardComponent } from './components/card';
 import { useState } from 'react';
 import { products } from './data/products';
 import { Route, Routes } from 'react-router-dom';
-import { Product } from './pages/product';
-import { ProductDetail } from './pages/productDetail';
+import { Product } from './pages/Product';
+import { ProductDetail } from './pages/ProductDetail';
+import { About } from './pages/About';
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             <Route path="/" />
             <Route path="/product" element={<Product />} />
             <Route path="/product/:id" element={<ProductDetail />} />
+            <Route path="/about" element={<About />} >
+              <Route path="member" element={<div>Member</div>} />
+            </Route>
           </Routes>
         </Container>
       </Box>
