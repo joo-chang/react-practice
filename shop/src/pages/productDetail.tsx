@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { products } from '../data/products';
-import { Typography, Box } from '@mui/material';
-
+import { Typography, Box, Input } from '@mui/material';
 export const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
+  const [price, setPrice] = useState(product?.price);
   const [showSale, setShowSale] = useState(true);
   if (!product) {
     return <div>Product not found</div>;
@@ -38,7 +38,17 @@ export const ProductDetail = () => {
       <Typography variant="body1" paragraph>
         {product.description}
       </Typography>
-      <Typography variant="h6">Price: {product.price}</Typography>
+      <Typography variant="h6">가격 흥정</Typography>
+      <Input
+        value={price}
+        onChange={(e) => {
+          if (isNaN(Number(e.target.value))) {
+            return alert('숫자만 입력해주세요');
+          }
+          setPrice(Number(e.target.value));
+        }}
+      />
+      <Typography variant="h6">Price: {price}</Typography>
     </Box>
   );
 };
