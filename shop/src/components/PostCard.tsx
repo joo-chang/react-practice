@@ -5,26 +5,21 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 
-export const CardComponent = (props) => {
-  const product = props.product;
+export const PostCard = (props) => {
+  const post = props.post;
   return (
     <Card sx={{ width: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="240"
-          image={product.image}
-          alt={product.title}
-        />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {product.title}
+            {post.title}
           </Typography>
+          <Typography
+            variant="body2"
+            sx={{ color: 'text.secondary' }}
+          ></Typography>
           <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {product.price}
-          </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            {product.description}
+            {post.body}
           </Typography>
         </CardContent>
       </CardActionArea>

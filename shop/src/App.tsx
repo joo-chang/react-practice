@@ -1,13 +1,12 @@
 import React from 'react';
 import { Container, Typography, Box, Grid } from '@mui/material';
 import { Header } from './components/header';
-import { CardComponent } from './components/card';
-import { useState } from 'react';
-import { products } from './data/products';
 import { Route, Routes } from 'react-router-dom';
-import { Product } from './pages/Product';
-import { ProductDetail } from './pages/ProductDetail';
 import { About } from './pages/About';
+import { Post } from './pages/Post';
+import { PostDetail } from './pages/PostDetail';
+import { ProductDetail } from './pages/productDetail';
+import { Product } from './pages/product';
 
 function App() {
   return (
@@ -21,7 +20,9 @@ function App() {
             <Route path="/" />
             <Route path="/product" element={<Product />} />
             <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/about" element={<About />} >
+            <Route path="/post" element={<Post />} />
+            <Route path="/post/:id" element={<PostDetail />} />
+            <Route path="/about" element={<About />}>
               <Route path="member" element={<div>Member</div>} />
             </Route>
           </Routes>
