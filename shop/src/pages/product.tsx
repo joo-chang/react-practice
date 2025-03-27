@@ -12,20 +12,9 @@ export const Product = () => {
   };
   const [posts, setPosts] = useState<PostInfo[]>([]);
 
-  const search = () => {
-    fetch('https://jsonplaceholder.typicode.com/posts')
-      .then((response) => response.json())
-      .then((data: PostInfo[]) => {
-        setPosts(data);
-      })
-      .catch((error) => console.error('Error fetching posts:', error));
-  };
 
   const [productList] = useState(products);
 
-  useEffect(() => {
-    search();
-  }, []);
   return (
     <div>
       <h1>Product Page</h1>
