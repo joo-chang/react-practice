@@ -12,7 +12,19 @@ const cart = createSlice({
     { id: 2, name: 'banana', price: 2000, quantity: 2 },
     { id: 3, name: 'orange', price: 3000, quantity: 3 },
   ],
+  reducers: {
+    addItem: (state, action) => {
+      state.push(action.payload);
+    },
+    updateItem: (state, action) => {
+      const { id } = action.payload;
+      const item = state.find((item) => item.id === id);
+      item.quantity = item.quantity + 1;
+    },
+  },
 });
+
+export const { addItem, updateItem } = cart.actions;
 
 export default configureStore({
   reducer: {

@@ -5,12 +5,15 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Button,
 } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, updateItem } from '../store';
 
 export default function Cart() {
   const user = useSelector((state: any) => state.user);
   const cart = useSelector((state: any) => state.cart);
+  const dispatch = useDispatch();
   return (
     <div>
       <Table>
@@ -29,10 +32,35 @@ export default function Cart() {
               <TableCell>{item.price}</TableCell>
               <TableCell>{item.quantity}</TableCell>
               <TableCell>{item.price * item.quantity}</TableCell>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  dispatch(updateItem({ id: item.id }));
+                }}
+              >
+                Update
+              </Button>
             </TableRow>
           ))}
         </TableBody>
       </Table>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          dispatch(
+            addItem({
+              id: cart.length + 1,
+              name: 'apple',
+              price: 1000,
+              quantity: 1 + cart.length,
+            }),
+          );
+        }}
+      >
+        Checkout
+      </Button>
     </div>
   );
 }
