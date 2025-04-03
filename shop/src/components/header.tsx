@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link, useNavigate } from 'react-router-dom';
 
-const pages = ['Home', 'Product', 'Post', 'About'];
+const pages = ['Home', 'Product', 'Post', 'About', 'Cart'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 export const Header = () => {
@@ -43,6 +43,8 @@ export const Header = () => {
         navigate('/about');
       } else if (page === 'Post') {
         navigate('/post');
+      } else if (page === 'Cart') {
+        navigate('/cart');
       }
     },
     [navigate],
