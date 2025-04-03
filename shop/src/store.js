@@ -7,11 +7,7 @@ const user = createSlice({
 
 const cart = createSlice({
   name: 'cart',
-  initialState: [
-    { id: 1, name: 'apple', price: 1000, quantity: 1 },
-    { id: 2, name: 'banana', price: 2000, quantity: 2 },
-    { id: 3, name: 'orange', price: 3000, quantity: 3 },
-  ],
+  initialState: [],
   reducers: {
     addItem: (state, action) => {
       state.push(action.payload);
@@ -21,10 +17,19 @@ const cart = createSlice({
       const item = state.find((item) => item.id === id);
       item.quantity = item.quantity + 1;
     },
+    insertOrReplaceItem: (state, action) => {
+      const { quantity, id, name, price } = action.payload;
+      const item = state.find((item) => item.id === id);
+      if (item) {
+        item.quantity = item.quantity + quantity;
+      } else {
+        state.push(action.payload);
+      }
+    },
   },
 });
 
-export const { addItem, updateItem } = cart.actions;
+export const { addItem, updateItem, insertOrReplaceItem } = cart.actions;
 
 export default configureStore({
   reducer: {

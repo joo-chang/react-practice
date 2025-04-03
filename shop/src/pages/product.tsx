@@ -4,6 +4,8 @@ import { products } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
 import { useNavigate } from 'react-router-dom';
 import { PostInfo } from '../data/posts';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../store';
 
 export const Product = () => {
   const navigate = useNavigate();
@@ -11,7 +13,6 @@ export const Product = () => {
     navigate(`/product/${id}`);
   };
   const [posts, setPosts] = useState<PostInfo[]>([]);
-
 
   const [productList] = useState(products);
 
