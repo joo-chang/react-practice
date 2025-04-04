@@ -6,6 +6,8 @@ import { TabList } from '@mui/lab';
 import { TabContext } from '@mui/lab';
 import { insertOrReplaceItem, updateItem } from '../store';
 import { useDispatch } from 'react-redux';
+import { useRecentProducts } from '../hooks/useRecentProducts';
+
 export const ProductDetail = () => {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
@@ -16,6 +18,8 @@ export const ProductDetail = () => {
   }
   const [value, setValue] = useState('1');
   const dispatch = useDispatch();
+  const { addRecentProduct } = useRecentProducts();
+
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
@@ -25,10 +29,13 @@ export const ProductDetail = () => {
       setShowSale(false);
     }, 3000);
 
+    
+    addRecentProduct(product);
+
     return () => {
       clearTimeout(time);
     };
-  }, []);
+  }, [product]);
   return (
     <Box
       sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}

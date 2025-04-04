@@ -34,33 +34,18 @@ export default function Cart() {
               <TableCell>{item.price * item.quantity}</TableCell>
               <Button
                 variant="contained"
+                size="small"
                 color="primary"
                 onClick={() => {
                   dispatch(updateItem({ id: item.id }));
                 }}
               >
-                Update
+                up
               </Button>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => {
-          dispatch(
-            addItem({
-              id: cart.length + 1,
-              name: 'apple',
-              price: 1000,
-              quantity: 1 + cart.length,
-            }),
-          );
-        }}
-      >
-        Checkout
-      </Button>
     </div>
   );
 }

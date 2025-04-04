@@ -8,6 +8,7 @@ import { PostDetail } from './pages/PostDetail';
 import { ProductDetail } from './pages/productDetail';
 import { Product } from './pages/product';
 import Cart from './pages/Cart';
+import Recently from './pages/Recently';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="member" element={<div>Member</div>} />
             </Route>
             <Route path="/cart" element={<Cart />} />
+            <Route path="/recently" element={<Recently />} />
           </Routes>
         </Container>
       </Box>

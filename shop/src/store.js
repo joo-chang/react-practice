@@ -29,6 +29,17 @@ const cart = createSlice({
   },
 });
 
+const recentProducts = createSlice({
+  name: 'recentProducts',
+  initialState: [],
+  reducers: {
+    addRecentProduct: (state, action) => {
+      state.push(action.payload);
+    },
+  },
+});
+
+
 export const { addItem, updateItem, insertOrReplaceItem } = cart.actions;
 
 export default configureStore({
