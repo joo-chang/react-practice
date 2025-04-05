@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Typography, Box, Input, Tabs, Tab } from '@mui/material';
 import { PostInfo } from '../data/posts';
 import { TabContext, TabList } from '@mui/lab';
-export const PostDetail = () => {
+export default function PostDetail() {
   const { id } = useParams();
   const [post, setPost] = useState<PostInfo>();
   useEffect(() => {

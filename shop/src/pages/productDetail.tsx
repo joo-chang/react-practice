@@ -8,7 +8,7 @@ import { insertOrReplaceItem, updateItem } from '../store';
 import { useDispatch } from 'react-redux';
 import { useRecentProducts } from '../hooks/useRecentProducts';
 
-export const ProductDetail = () => {
+export default function ProductDetail() {
   const { id } = useParams();
   const product = products.find((p) => p.id === Number(id));
   const [price, setPrice] = useState(product?.price);
@@ -29,7 +29,6 @@ export const ProductDetail = () => {
       setShowSale(false);
     }, 3000);
 
-    
     addRecentProduct(product);
 
     return () => {
@@ -85,7 +84,7 @@ export const ProductDetail = () => {
       <TabPanel value={value} />
     </Box>
   );
-};
+}
 
 function TabPanel({ value }) {
   if (value == '1') {

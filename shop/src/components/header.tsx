@@ -17,6 +17,22 @@ import { Link, useNavigate } from 'react-router-dom';
 const pages = ['Home', 'Product', 'Post', 'About', 'Cart', 'Recently'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
+const pageRoutes: Record<string, string> = {
+  Home: '/',
+  Product: '/product',
+  Post: '/post',
+  About: '/about',
+  Cart: '/cart',
+  Recently: '/recently',
+};
+
+const settingRoutes: Record<string, string> = {
+  Profile: '/profile',
+  Account: '/account',
+  Dashboard: '/dashboard',
+  Logout: '/logout',
+};
+
 export const Header = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null,
@@ -35,26 +51,24 @@ export const Header = () => {
   const handleCloseNavMenu = useCallback(
     (page: string) => {
       setAnchorElNav(null);
-      if (page === 'Home') {
-        navigate('/');
-      } else if (page === 'Product') {
-        navigate('/product');
-      } else if (page === 'About') {
-        navigate('/about');
-      } else if (page === 'Post') {
-        navigate('/post');
-      } else if (page === 'Cart') {
-        navigate('/cart');
-      } else if (page === 'Recently') {
-        navigate('/recently');
+      const route = pageRoutes[page];
+      if (route) {
+        navigate(route);
       }
     },
     [navigate],
   );
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  const handleCloseUserMenu = useCallback(
+    (setting: string) => {
+      setAnchorElUser(null);
+      const route = settingRoutes[setting];
+      if (route) {
+        navigate(route);
+      }
+    },
+    [navigate],
+  );
 
   return (
     <AppBar>
@@ -88,6 +102,44 @@ export const Header = () => {
                 {page}
               </Button>
             ))}
+          </Box>
+
+          <Box sx={{ flexGrow: 1 }} />
+
+          <Box sx={{ display: 'flex', alignItems: 'center' }}>
+            <Typography variant="body1" sx={{ mr: 2, color: 'white' }}>
+              사용자 이름
+            </Typography>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="User" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={() => setAnchorElUser(null)}
+            >
+              {settings.map((setting) => (
+                <MenuItem
+                  key={setting}
+                  onClick={() => handleCloseUserMenu(setting)}
+                >
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
           </Box>
         </Toolbar>
       </Container>

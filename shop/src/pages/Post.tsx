@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { PostInfo } from '../data/posts';
 import { PostCard } from '../components/PostCard';
 
-export const Post = () => {
+export default function Post() {
   const navigate = useNavigate();
   const handleCardClick = (post: PostInfo) => {
     navigate(`/post/${post.id}`);
@@ -45,4 +45,4 @@ export const Post = () => {
       </Grid>
     </div>
   );
-};
+}

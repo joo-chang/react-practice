@@ -1,13 +1,11 @@
-import { Grid, Typography } from '@mui/material';
-import React, { useCallback, useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
+import React, { useState } from 'react';
 import { products } from '../data/products';
 import { ProductCard } from '../components/ProductCard';
 import { useNavigate } from 'react-router-dom';
 import { PostInfo } from '../data/posts';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../store';
 
-export const Product = () => {
+export default function Product() {
   const navigate = useNavigate();
   const handleCardClick = (id: number) => {
     navigate(`/product/${id}`);
@@ -37,4 +35,4 @@ export const Product = () => {
       </Grid>
     </div>
   );
-};
+}
